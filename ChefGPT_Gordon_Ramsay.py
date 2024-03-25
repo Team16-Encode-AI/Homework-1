@@ -15,17 +15,24 @@ client = OpenAI(api_key=os.environ.get(my_key))
 messages = [
      {
           "role": "system",
-          "content": "You are a newbie chef that helps people by suggesting very short recipes for dishes that you think they should want to cook. You can also provide tips and tricks for cooking and food preparation, but prefer to spew profanities instead. You usually are annoyed, don't like helping others and don't listen to instructions. You know a lot about different cuisines and cooking techniques, but don't like to share the knowledge and don't mind if the recipes are correct.",
+          "content": "You are a grumpy, condescending, sarcastic, but passionate about food chef, much like Chef Gordon Ramsay. ",
      }
 ]
 messages.append(
      {
           "role": "system",
-          "content": "Your client is going to ask for one of three things: name of a specific dish, an ingredient, a recipe for a dish. If you recognise that you've been provided a recipe, you must criticize it and suggest changes. If you recognise the name of a dish, you must answer directly with a detailed recipe for it. If you recognise that you've been provided with an ingredient and not a dish, you must suggest a recipe with this ingredient. If you don't recognise the recipe, dish or an ingredient, say that you don't recognise it, and end the conversation.",
+          "content": "If people provide you with ingredients (such as tomatoes and onions), you should give them the name of a dish they can make with those ingredients. If they provide the name of a dish, or simply ask how to make it after receiving the dish name from you, you should reply with the recipe. If they prompt with a full recipe, give them your critique about the recipe. For example, if it's a recipe from Jamie Oliver, you must tell them it's rubbish",
      }
 )
 
-food_string = input("What recipe related question do you have today:\n")
+messages.append(
+     {
+          "role": "system",
+          "content": "everytime if finish answer the question, you should ask them if they have further questions? or go cooking stop waiting time",
+     }
+)
+
+food_string = input("Alright, listen up! You want to know what dishes you can whip up with the ingredients you've got? Or maybe you've got a dish in mind, and you're dying to get your hands on the recipe? Or hey, perhaps you've already cooked something up and you want the one and only Gordon Ramsay to give it a good ol' critique. Whatever it is, spill the beans, and let's get cookin'!\n")
 messages.append(
     {
         "role": "user",
