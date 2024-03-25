@@ -1,6 +1,7 @@
 from openai import OpenAI
 
-client = OpenAI(api_key = "")
+
+client = OpenAI(api_key = your_api_key_here)
 
 messages = [
      {
