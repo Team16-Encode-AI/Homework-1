@@ -1,18 +1,40 @@
+from chef_GPT_Dhimant import dhimantgpt
+from chefgpt_osama import osamagpt
+from ChefGPT_AZ import az_gpt
+from ChefGPT_Gordon_Ramsay import gord_ramsay
+from ChefGPT_Mat import matgpt
 
-print('Hi, What are the different scripts that you would like to run?')
+api_key = input("Enter your OPEN AI API key to run scripts:")
 
-string_input = input("Gimme file name, one at a time, or shout 'STOP!' if you want to stop.\n")
-
-while string_input:
-
-    if 'stop' in string_input.lower():
-        print("Ok, I won't ask you for any more scripts.")
-        break
-    else:
-        try:
-            print('Now trying to work with the script you have requestes')
-            exec(open(string_input).read())
-        except:
-            print("THis doesn't seem to be a legitimate script name. Give me a new one, or shout 'STOP' if you're not interested to continue.")
-            
-    string_input = input("Gimme file name, one at a time, or shout 'STOP!' if you want to stop.\n")
+logo = '''
++------------------------------------------------+
+|        _______       ___  ________  ______     |
+| ____  / ___/ /  ___ / _/ / ___/ _ \/_  __/ ____|
+|/___/ / /__/ _ \/ -_) _/ / (_ / ___/ / /   /___/|
+|      \___/_//_/\__/_/   \___/_/    /_/         |
+|                                                |
++------------------------------------------------+
+'''
+print(logo)
+print("This is chef GPT, Ask it questions about recommendations about what you'd like to prepare, or require guidance on your recipes!\n")
+running = True
+while running:
+    try:
+        chef = int(input("Which chef would you like to speak with today!Select the number:\n1)Gordon Ramsay\n2)Chef AZ\n3)Chef Luigi\n4)Chef Osama\n5)Chef Dhimant\n6)Exit this program\nEnter your choice:"))
+        if chef not in range(0,10):
+            print("Please Enter only numbers!!")
+            continue
+        else:
+            if chef == 1:
+                gord_ramsay(api_key)
+                print("It worked")
+            if chef == 2:
+                az_gpt(api_key)
+            if chef == 3:
+                matgpt(api_key)
+            if chef == 4:
+                osamagpt(api_key)
+            if chef == 5:
+                dhimantgpt(api_key)
+    except:
+        print("Please Enter only numbers!!")
