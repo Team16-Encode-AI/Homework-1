@@ -21,7 +21,7 @@ running = True
 while running:
     try:
         chef = int(input("Which chef would you like to speak with today!Select the number:\n1)Gordon Ramsay\n2)Chef AZ\n3)Chef Luigi\n4)Chef Osama\n5)Chef Dhimant\n6)Exit this program\nEnter your choice:"))
-        if chef not in range(0,10):
+        if chef not in range(1,7):
             print("Please Enter only numbers!!")
             continue
         else:
